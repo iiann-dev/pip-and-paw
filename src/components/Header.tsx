@@ -1,12 +1,26 @@
+import { useEffect, useState } from 'react'
 import { Search, Star, ShoppingCart } from 'lucide-react'
 import { ASSETS, NAV_LINKS } from '../data/assets'
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="relative z-30 shrink-0 px-4 py-4 sm:px-8 lg:px-12 animate-fade-up delay-100">
+    <header
+      className={`fixed inset-x-0 top-0 z-40 px-4 py-4 transition-all duration-300 sm:px-8 lg:px-12 ${
+        scrolled ? 'bg-mint/85 shadow-[0_12px_40px_-20px_rgb(26_61_26/0.25)] backdrop-blur-md' : 'bg-transparent'
+      }`}
+    >
       <div className="flex items-center justify-between gap-4">
         {/* Logo */}
-        <a href="#" aria-label="CozyPaws home" className="shrink-0">
+        <a href="#top" aria-label="CozyPaws home" className="shrink-0">
           <img
             src={ASSETS.logo}
             alt="CozyPaws"
@@ -20,9 +34,9 @@ export default function Header() {
           {NAV_LINKS.map((link, i) => (
             <a
               key={link}
-              href="#"
+              href="#top"
               className={`text-sm font-medium transition-colors duration-200 hover:text-forest ${
-                i === 0 ? 'text-forest' : 'text-gray-600'
+                i === 0 ? 'text-forest' : 'text-forest/60'
               }`}
             >
               {link}
@@ -32,7 +46,6 @@ export default function Header() {
 
         {/* Right actions */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Search */}
           <button
             type="button"
             aria-label="Search"
@@ -41,7 +54,6 @@ export default function Header() {
             <Search className="h-[18px] w-[18px]" strokeWidth={2} />
           </button>
 
-          {/* Favorites */}
           <button
             type="button"
             aria-label="Favorites"
@@ -53,7 +65,6 @@ export default function Header() {
             </span>
           </button>
 
-          {/* Cart */}
           <button
             type="button"
             aria-label="Cart"
@@ -65,7 +76,6 @@ export default function Header() {
             </span>
           </button>
 
-          {/* Avatar */}
           <img
             src={ASSETS.avatar}
             alt="Your profile"
