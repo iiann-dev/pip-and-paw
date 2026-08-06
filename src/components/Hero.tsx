@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight, Play, Plus, Star } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { ASSETS } from '../data/assets'
 
 function Heading() {
@@ -104,13 +105,13 @@ function BannerCards() {
           <p className="font-serif-display text-lg leading-snug text-white sm:text-xl md:text-2xl">
             Best Products for Your Pet
           </p>
-          <a
-            href="#shop"
+          <Link
+            to="/shop"
             className="group pointer-events-auto inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-xs font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.04] active:scale-95 sm:px-5 sm:py-2.5 sm:text-sm"
           >
             Explore Products
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </a>
+          </Link>
         </div>
 
         {/* Right — rating */}
@@ -178,13 +179,13 @@ function MobileHero() {
         <p className="mt-4 max-w-[260px] text-sm leading-relaxed text-gray-600 animate-fade-up delay-600">
           Premium food, toys and cozy homes for happy pets — delivered to your door.
         </p>
-        <a
-          href="#shop"
+        <Link
+          to="/shop"
           className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.03] active:scale-95 animate-fade-up delay-700"
         >
           Explore Products
           <ArrowRight className="h-4 w-4" />
-        </a>
+        </Link>
       </div>
 
       <div className="mt-8 flex gap-3 animate-fade-up delay-800">

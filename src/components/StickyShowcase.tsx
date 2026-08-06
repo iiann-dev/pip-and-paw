@@ -1,4 +1,5 @@
 import { ArrowRight, Heart, PawPrint, Truck } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
 import { ASSETS } from '../data/assets'
 
@@ -10,8 +11,8 @@ import { ASSETS } from '../data/assets'
 export default function StickyShowcase() {
   const ref = useReveal<HTMLElement>()
   return (
-    <section ref={ref} className="relative" style={{ height: '210vh' }}>
-      <div className="sticky top-0 flex h-screen flex-col overflow-hidden bg-[#003C08] text-white lg:flex-row">
+    <section ref={ref} className="relative z-0" style={{ height: '200vh' }}>
+      <div className="sticky top-0 z-10 flex h-screen flex-col overflow-hidden bg-[#003C08] text-white lg:flex-row">
         {/* Copy */}
         <div className="flex flex-1 flex-col justify-center px-6 py-14 sm:px-10 lg:px-20">
           <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-mint/50">
@@ -47,13 +48,13 @@ export default function StickyShowcase() {
             ))}
           </div>
 
-          <a
-            href="#shop"
-            className="reveal group mt-10 inline-flex w-fit items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.03] active:scale-95"
-          >
-            Shop the collection
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </a>
+          <Link
+                      to="/shop"
+                      className="reveal mt-10 inline-flex w-fit items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.03] active:scale-95"
+                    >
+                      Shop the collection
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                    </Link>
         </div>
 
         {/* Visual — full retriever (dark ledge blends into the dark panel) */}

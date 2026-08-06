@@ -1,8 +1,20 @@
 import { useEffect, useState } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { Search, Star, ShoppingCart } from 'lucide-react'
-import { ASSETS, NAV_LINKS } from '../data/assets'
+import { useStore } from '../context/store'
+import { ASSETS } from '../data/assets'
+
+const NAV = [
+  { label: 'Home', to: '/' },
+  { label: 'Shop', to: '/shop' },
+  { label: 'Delivery and payment', to: '/delivery' },
+  { label: 'Brands', to: '/brands' },
+  { label: 'Blog', to: '/blog' },
+]
 
 export default function Header() {
+  const { user, cartCount, favCount } = useStore()
+  const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -20,67 +32,106 @@ export default function Header() {
     >
       <div className="flex items-center justify-between gap-4">
         {/* Logo */}
-        <a href="#top" aria-label="CozyPaws home" className="shrink-0">
-          <img
-            src={ASSETS.logo}
-            alt="CozyPaws"
-            className="h-[33px] w-auto lg:h-[52px]"
-            style={{ maxWidth: '130px' }}
-          />
-        </a>
+        <Link to="/" aria-label="CozyPaws home" className="shrink-0">
+          <img src={ASSETS.logo} alt="CozyPaws" className="h-[33px] w-auto lg:h-[52px]" style={{ maxWidth: '130px' }} />
+        </Link>
 
         {/* Center nav */}
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
-          {NAV_LINKS.map((link, i) => (
-            <a
-              key={link}
-              href="#top"
-              className={`text-sm font-medium transition-colors duration-200 hover:text-forest ${
-                i === 0 ? 'text-forest' : 'text-forest/60'
-              }`}
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Main">
+          {NAV.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors duration-200 hover:text-forest ${
+                  isActive ? 'text-forest' : 'text-forest/60'
+                }`
+              }
             >
-              {link}
-            </a>
+              {item.label}
+            </NavLink>
           ))}
         </nav>
 
         {/* Right actions */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <button
-            type="button"
-            aria-label="Search"
+          <Link
+            to="/shop"
+            aria-label="Search products"
             className="hidden h-10 w-10 items-center justify-center rounded-full border border-forest/15 text-forest transition-colors duration-200 hover:bg-forest/5 sm:flex"
           >
             <Search className="h-[18px] w-[18px]" strokeWidth={2} />
-          </button>
+          </Link>
 
-          <button
-            type="button"
-            aria-label="Favorites"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white transition-colors duration-200 hover:bg-accent-hover"
-          >
-            <Star className="h-[18px] w-[18px] fill-current" strokeWidth={0} />
-            <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-mint bg-accent text-[10px] font-bold leading-none text-white">
-              4
-            </span>
-          </button>
+          {user ? (
+            <>
+              {/* Favorites — logged in */}
+              <Link
+                to="/favorites"
+                aria-label={`Favorites, ${favCount} saved`}
+                className="relative flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white transition-colors duration-200 hover:bg-accent-hover"
+              >
+                <Star className="h-[18px] w-[18px] fill-current" strokeWidth={0} />
+                {favCount > 0 && (
+                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-mint bg-forest text-[10px] font-bold leading-none text-white">
+                    {favCount}
+                  </span>
+                )}
+              </Link>
 
-          <button
-            type="button"
-            aria-label="Cart"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full border border-forest/15 text-forest transition-colors duration-200 hover:bg-forest/5"
-          >
-            <ShoppingCart className="h-[18px] w-[18px]" strokeWidth={2} />
-            <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-mint bg-accent text-[10px] font-bold leading-none text-white">
-              1
-            </span>
-          </button>
+              {/* Cart — logged in */}
+              <Link
+                to="/cart"
+                aria-label={`Cart, ${cartCount} items`}
+                className="relative flex h-10 w-10 items-center justify-center rounded-full border border-forest/15 text-forest transition-colors duration-200 hover:bg-forest/5"
+              >
+                <ShoppingCart className="h-[18px] w-[18px]" strokeWidth={2} />
+                {cartCount > 0 && (
+                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-mint bg-accent text-[10px] font-bold leading-none text-white">
+                    {cartCount}
+                  </span>
+                )}
+              </Link>
 
-          <img
-            src={ASSETS.avatar}
-            alt="Your profile"
-            className="h-10 w-10 rounded-full object-cover ring-1 ring-forest/10"
-          />
+              <Link to="/profile" aria-label="Your profile">
+                <img
+                  src={ASSETS.avatar}
+                  alt="Your profile"
+                  className="h-10 w-10 rounded-full object-cover ring-1 ring-forest/10"
+                />
+              </Link>
+            </>
+          ) : (
+            <>
+              {/* Favorites — guest: empty, prompts sign-up */}
+              <Link
+                to="/signup"
+                state={{ from: '/favorites' }}
+                aria-label="Favorites — sign in required"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-forest/15 text-forest/70 transition-colors duration-200 hover:bg-forest/5 hover:text-forest"
+              >
+                <Star className="h-[18px] w-[18px]" strokeWidth={2} />
+              </Link>
+
+              {/* Cart — guest: empty, prompts sign-up */}
+              <Link
+                to="/signup"
+                state={{ from: '/cart' }}
+                aria-label="Cart — sign in required"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-forest/15 text-forest/70 transition-colors duration-200 hover:bg-forest/5 hover:text-forest"
+              >
+                <ShoppingCart className="h-[18px] w-[18px]" strokeWidth={2} />
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => navigate('/signup')}
+                className="inline-flex h-10 items-center rounded-full bg-forest px-4 text-sm font-semibold text-white transition-all duration-200 hover:bg-forest-hover hover:scale-[1.02] active:scale-95"
+              >
+                Sign in
+              </button>
+            </>
+          )}
         </div>
       </div>
     </header>

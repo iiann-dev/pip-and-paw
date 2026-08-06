@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { PawPrint } from 'lucide-react'
 
 const SOCIALS = [
@@ -18,15 +19,33 @@ const SOCIALS = [
 const COLUMNS = [
   {
     title: 'Shop',
-    links: ['For dogs', 'For cats', 'Play & care', 'Cozy homes', 'Gift cards'],
+    links: [
+      { label: 'For dogs', to: '/shop/dogs' },
+      { label: 'For cats', to: '/shop/cats' },
+      { label: 'Play & care', to: '/shop/play' },
+      { label: 'Cozy homes', to: '/shop/home' },
+      { label: 'All products', to: '/shop' },
+    ],
   },
   {
     title: 'Company',
-    links: ['Our story', 'Reviews', 'Sustainability', 'Careers', 'Press'],
+    links: [
+      { label: 'Our story', to: '/' },
+      { label: 'Reviews', to: '/' },
+      { label: 'Sustainability', to: '/delivery' },
+      { label: 'Careers', to: '/' },
+      { label: 'Press', to: '/blog' },
+    ],
   },
   {
     title: 'Support',
-    links: ['Delivery & returns', 'FAQ', 'Track your order', 'Contact us', 'Pet nutrition guide'],
+    links: [
+      { label: 'Delivery & returns', to: '/delivery' },
+      { label: 'FAQ', to: '/' },
+      { label: 'Track your order', to: '/delivery' },
+      { label: 'Contact us', to: '/' },
+      { label: 'Pet nutrition guide', to: '/blog' },
+    ],
   },
 ]
 
@@ -36,12 +55,12 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8 lg:px-12 lg:pt-20">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr] lg:gap-14">
           <div>
-            <a href="#top" className="flex items-center gap-2.5">
+            <Link to="/" className="flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-white">
                 <PawPrint className="h-5 w-5" />
               </span>
               <span className="font-serif-display text-xl tracking-tight text-mint">CozyPaws</span>
-            </a>
+            </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-mint/55">
               Everything your pets love — vet-approved food, toys and cozy homes, delivered
               carbon-neutral in two days.
@@ -69,13 +88,13 @@ export default function Footer() {
               </h3>
               <ul className="mt-4 space-y-3">
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#shop"
+                  <li key={link.label}>
+                    <Link
+                      to={link.to}
                       className="text-sm text-mint/75 transition-colors duration-200 hover:text-mint"
                     >
-                      {link}
-                    </a>
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -86,9 +105,9 @@ export default function Footer() {
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-mint/10 pt-7 text-[12px] text-mint/45 sm:flex-row">
           <p>© {new Date().getFullYear()} CozyPaws. All rights reserved.</p>
           <div className="flex items-center gap-5">
-            <a href="#top" className="hover:text-mint">Privacy</a>
-            <a href="#top" className="hover:text-mint">Terms</a>
-            <a href="#top" className="hover:text-mint">Cookies</a>
+            <Link to="/" className="hover:text-mint">Privacy</Link>
+            <Link to="/" className="hover:text-mint">Terms</Link>
+            <Link to="/" className="hover:text-mint">Cookies</Link>
           </div>
         </div>
       </div>

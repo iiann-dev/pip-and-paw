@@ -1,9 +1,11 @@
 import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
 import { ASSETS } from '../data/assets'
 
 const CATEGORIES = [
   {
+    slug: 'dogs',
     label: 'For dogs',
     itemCount: 128,
     img: ASSETS.petDachshund,
@@ -11,6 +13,7 @@ const CATEGORIES = [
     delay: 0,
   },
   {
+    slug: 'home',
     label: 'Cozy homes',
     itemCount: 64,
     img: ASSETS.catHouse,
@@ -18,6 +21,7 @@ const CATEGORIES = [
     delay: 100,
   },
   {
+    slug: 'cats',
     label: 'For cats',
     itemCount: 96,
     img: ASSETS.petTabby,
@@ -25,6 +29,7 @@ const CATEGORIES = [
     delay: 200,
   },
   {
+    slug: 'play',
     label: 'Play & care',
     itemCount: 52,
     img: ASSETS.videoCard,
@@ -36,7 +41,7 @@ const CATEGORIES = [
 export default function Categories() {
   const ref = useReveal<HTMLElement>()
   return (
-    <section ref={ref} id="shop" className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+    <section ref={ref} id="shop" className="relative z-30 -mt-[100vh] bg-mint px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div className="reveal">
@@ -53,9 +58,9 @@ export default function Categories() {
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-5">
           {CATEGORIES.map((cat) => (
-            <a
+            <Link
               key={cat.label}
-              href="#shop"
+              to={`/shop/${cat.slug}`}
               style={{ '--reveal-delay': `${cat.delay}ms` } as React.CSSProperties}
               className={`reveal group relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift ${
                 cat.cover ? 'border-transparent bg-forest' : 'border-forest/10 bg-mint-deep'
@@ -96,7 +101,7 @@ export default function Categories() {
                   <ArrowUpRight className="h-4 w-4" />
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

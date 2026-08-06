@@ -44,8 +44,7 @@ export default function FAQ() {
             return (
               <div
                 key={f.q}
-                style={{ '--reveal-delay': `${i * 80}ms` } as React.CSSProperties}
-                className={`reveal overflow-hidden rounded-2xl border transition-colors duration-200 ${
+                className={`overflow-hidden rounded-2xl border transition-colors duration-200 ${
                   isOpen ? 'border-forest/15 bg-mint' : 'border-forest/10 bg-white'
                 }`}
               >
