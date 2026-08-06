@@ -10,8 +10,11 @@ export const ASSETS = {
   petDachshund: '/assets/dachshund.png',
   petRetriever: '/assets/retriever.png',
   petTabby: '/assets/tabby.png',
-  // full uncropped retriever (dark ledge) for dark-surface usage
+  // full uncropped originals (with baked-in ledges) — used for the hero's full-width
+  // pet strip and the retriever on dark surfaces, per the original hero prompt
+  petDachshundFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/8d44b25186ef45a5789c74668fb781cea4e1ff49.png',
   petRetrieverFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/96745c4e72ad5c5208e53a885df797fd82cd854a.png?h=1024',
+  petTabbyFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/81bd2e7a66b58f3d8f3ad78fd1ebf01af8dfdee1.png',
 } as const
 
 export const NAV_LINKS = ['Home', 'Shop', 'Delivery and payment', 'Brands', 'Blog'] as const

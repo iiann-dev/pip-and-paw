@@ -63,90 +63,76 @@ function VideoCard({ compact = false }: { compact?: boolean }) {
   )
 }
 
-/* ---------- Bottom: banner strip + pets peeking (md and up, per reference) ---------- */
+/* ---------- Bottom: 3 full pet images (strip) + overlays (md+), per original prompt ----------
+   Prompt: 3 images absolutely positioned bottom-0 left-0 right-0, z-10, flex items-end, no gaps.
+   Left flex-1 max-h min(70vh,55vw); Center flex-[1.265] max-h min(85vh,70vw); Right flex-1
+   max-h min(70vh,55vw); all w-full h-auto block. Overlays (98K+ / Best Products + Explore /
+   4.6) float on top at bottom: clamp(20px,4vh,50px). No cards — so the paws are never covered. */
 
-function BannerCards() {
-  const cardH = 'h-[clamp(150px,20vh,188px)]'
+function BottomPets() {
   return (
-    <div className="relative">
-      {/* Card surfaces (behind pets) */}
-      <div className={`flex ${cardH} gap-3 sm:gap-4`}>
-        <div className="flex-1 rounded-3xl bg-[#A7E8B0] animate-scale-in delay-1000" />
-        <div className="flex-[1.35] rounded-3xl bg-[#003C08] animate-scale-in delay-1100" />
-        <div className="flex-1 rounded-3xl bg-[#A7E8B0] animate-scale-in delay-1200" />
-      </div>
-
-      {/* Content overlay */}
-      <div
-        className={`pointer-events-none absolute inset-x-0 bottom-0 z-30 flex ${cardH} gap-3 sm:gap-4`}
-      >
-        {/* Left — community stat */}
-        <div className="flex flex-1 flex-col items-center justify-center gap-2">
-          <div className="flex items-center -space-x-2">
-            <img
-              src={ASSETS.avatar}
-              alt=""
-              className="h-8 w-8 rounded-full border-2 border-white object-cover"
-            />
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-forest">
-              <Plus className="h-3.5 w-3.5 text-white" />
-            </div>
-          </div>
-          <div className="text-center leading-none">
-            <p className="text-lg font-bold text-forest">98K+</p>
-            <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.14em] text-forest/60">
-              Happy pets
-            </p>
-          </div>
-        </div>
-
-        {/* Center — featured CTA */}
-        <div className="flex flex-[1.35] flex-col items-center justify-center gap-2.5">
-          <p className="font-serif-display text-lg leading-snug text-white sm:text-xl md:text-2xl">
-            Best Products for Your Pet
-          </p>
-          <Link
-            to="/shop"
-            className="group pointer-events-auto inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-xs font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.04] active:scale-95 sm:px-5 sm:py-2.5 sm:text-sm"
-          >
-            Explore Products
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </Link>
-        </div>
-
-        {/* Right — rating */}
-        <div className="flex flex-1 flex-col items-center justify-center gap-2">
-          <div className="flex items-center gap-1.5">
-            <Star className="h-5 w-5 fill-accent text-accent" />
-            <span className="text-lg font-bold text-forest">4.6</span>
-          </div>
-          <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-forest/60">
-            Rated by parents
-          </p>
-        </div>
-      </div>
+    <div className="absolute inset-x-0 bottom-0 z-10 hidden items-end md:flex">
+      <img
+        src={ASSETS.petDachshundFull}
+        alt="Dachshund"
+        className="block h-auto w-full min-w-0 flex-1 max-h-[min(70vh,55vw)] animate-photo-reveal delay-700"
+      />
+      <img
+        src={ASSETS.petRetrieverFull}
+        alt="Golden retriever"
+        className="block h-auto w-full min-w-0 flex-[1.265] max-h-[min(85vh,70vw)] animate-photo-reveal delay-600"
+      />
+      <img
+        src={ASSETS.petTabbyFull}
+        alt="Tabby cat"
+        className="block h-auto w-full min-w-0 flex-1 max-h-[min(70vh,55vw)] animate-photo-reveal delay-800"
+      />
     </div>
   )
 }
 
-function PeekingPets() {
+function BottomOverlays() {
   return (
-    <div className="absolute inset-x-0 bottom-[calc(clamp(150px,20vh,188px)_-_6px)] z-20 hidden items-end justify-between px-8 sm:px-10 md:flex lg:px-14">
-      <img
-        src={ASSETS.petDachshund}
-        alt="Dachshund"
-        className="max-h-[30vh] w-auto animate-slide-up delay-700"
-      />
-      <img
-        src={ASSETS.petRetriever}
-        alt="Golden retriever"
-        className="max-h-[38vh] w-auto animate-slide-up delay-600"
-      />
-      <img
-        src={ASSETS.petTabby}
-        alt="Tabby cat"
-        className="max-h-[30vh] w-auto animate-slide-up delay-800"
-      />
+    <div
+      className="pointer-events-none absolute inset-x-0 z-20 hidden items-end md:flex"
+      style={{ bottom: 'clamp(20px, 4vh, 50px)' }}
+    >
+      {/* Left — community stat */}
+      <div className="flex flex-1 flex-col items-center gap-2 animate-fade-up delay-1000">
+        <div className="flex items-center -space-x-2">
+          <img
+            src={ASSETS.avatar}
+            alt=""
+            className="h-9 w-9 rounded-full border-2 border-white object-cover"
+          />
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-forest">
+            <Plus className="h-4 w-4 text-white" />
+          </div>
+        </div>
+        <p className="text-xl font-bold leading-none text-forest">98K+</p>
+      </div>
+
+      {/* Center — featured CTA */}
+      <div className="pointer-events-auto flex flex-[1.265] flex-col items-center gap-2.5 animate-fade-up delay-1100">
+        <p className="font-serif-display text-lg leading-snug text-white sm:text-xl md:text-2xl">
+          Best Products for Your Pet
+        </p>
+        <Link
+          to="/shop"
+          className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.04] active:scale-95"
+        >
+          Explore Products
+          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+        </Link>
+      </div>
+
+      {/* Right — rating */}
+      <div className="flex flex-1 flex-col items-center gap-2 animate-fade-up delay-1200">
+        <div className="flex items-center gap-1.5">
+          <Star className="h-6 w-6 fill-accent text-accent" />
+          <span className="text-xl font-bold leading-none text-forest">4.6</span>
+        </div>
+      </div>
     </div>
   )
 }
@@ -173,7 +159,7 @@ function MobilePetStrip() {
 
 function MobileHero() {
   return (
-    <div className="relative z-20 flex flex-1 flex-col px-4 pt-8 md:hidden">
+    <div className="relative z-20 flex flex-1 flex-col px-4 pt-20 md:hidden">
       <div className="flex flex-col items-center text-center">
         <Heading />
         <p className="mt-4 max-w-[260px] text-sm leading-relaxed text-gray-600 animate-fade-up delay-600">
@@ -219,7 +205,7 @@ function MobileHero() {
 
 export default function Hero() {
   return (
-    <section className="relative flex h-screen min-h-[640px] flex-col overflow-hidden">
+    <section className="relative flex h-screen min-h-[660px] flex-col overflow-hidden md:h-[132vh]">
       {/* Text layer — desktop / tablet */}
       <div className="relative z-20 hidden flex-col items-center px-4 pt-12 text-center sm:px-6 md:flex md:pt-14 lg:px-12 lg:pt-[4.6rem]">
         <Heading />
@@ -246,11 +232,9 @@ export default function Hero() {
       {/* Mobile content */}
       <MobileHero />
 
-      {/* Desktop/tablet bottom: pets peeking over banner strip */}
-      <PeekingPets />
-      <div className="absolute inset-x-0 bottom-0 hidden px-4 sm:px-6 md:block lg:px-10">
-        <BannerCards />
-      </div>
+      {/* Desktop/tablet bottom: 3 full pet images + floating overlays (per original prompt) */}
+      <BottomPets />
+      <BottomOverlays />
 
       {/* Mobile bottom: pet strip */}
       <MobilePetStrip />
