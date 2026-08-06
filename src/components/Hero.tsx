@@ -65,7 +65,7 @@ function VideoCard({ compact = false }: { compact?: boolean }) {
 /* ---------- Bottom: banner strip + pets peeking (md and up, per reference) ---------- */
 
 function BannerCards() {
-  const cardH = 'h-[clamp(178px,24vh,212px)]'
+  const cardH = 'h-[clamp(150px,20vh,188px)]'
   return (
     <div className="relative">
       {/* Card surfaces (behind pets) */}
@@ -75,12 +75,12 @@ function BannerCards() {
         <div className="flex-1 rounded-3xl bg-[#A7E8B0] animate-scale-in delay-1200" />
       </div>
 
-      {/* Content overlay (above pets) */}
+      {/* Content overlay */}
       <div
         className={`pointer-events-none absolute inset-x-0 bottom-0 z-30 flex ${cardH} gap-3 sm:gap-4`}
       >
         {/* Left — community stat */}
-        <div className="flex flex-1 flex-col items-center justify-end gap-2 pb-4">
+        <div className="flex flex-1 flex-col items-center justify-center gap-2">
           <div className="flex items-center -space-x-2">
             <img
               src={ASSETS.avatar}
@@ -100,7 +100,7 @@ function BannerCards() {
         </div>
 
         {/* Center — featured CTA */}
-        <div className="flex flex-[1.35] flex-col items-center justify-end gap-2.5 pb-4">
+        <div className="flex flex-[1.35] flex-col items-center justify-center gap-2.5">
           <p className="font-serif-display text-lg leading-snug text-white sm:text-xl md:text-2xl">
             Best Products for Your Pet
           </p>
@@ -114,7 +114,7 @@ function BannerCards() {
         </div>
 
         {/* Right — rating */}
-        <div className="flex flex-1 flex-col items-center justify-end gap-2 pb-4">
+        <div className="flex flex-1 flex-col items-center justify-center gap-2">
           <div className="flex items-center gap-1.5">
             <Star className="h-5 w-5 fill-accent text-accent" />
             <span className="text-lg font-bold text-forest">4.6</span>
@@ -130,21 +130,21 @@ function BannerCards() {
 
 function PeekingPets() {
   return (
-    <div className="absolute inset-x-0 bottom-0 z-20 hidden items-end justify-between px-8 sm:px-10 md:flex lg:px-14">
+    <div className="absolute inset-x-0 bottom-[calc(clamp(150px,20vh,188px)_-_6px)] z-20 hidden items-end justify-between px-8 sm:px-10 md:flex lg:px-14">
       <img
         src={ASSETS.petDachshund}
         alt="Dachshund"
-        className="max-h-[24vh] w-auto animate-slide-up delay-700"
+        className="max-h-[30vh] w-auto animate-slide-up delay-700"
       />
       <img
         src={ASSETS.petRetriever}
         alt="Golden retriever"
-        className="max-h-[29vh] w-auto animate-slide-up delay-600"
+        className="max-h-[38vh] w-auto animate-slide-up delay-600"
       />
       <img
         src={ASSETS.petTabby}
         alt="Tabby cat"
-        className="max-h-[24vh] w-auto animate-slide-up delay-800"
+        className="max-h-[30vh] w-auto animate-slide-up delay-800"
       />
     </div>
   )

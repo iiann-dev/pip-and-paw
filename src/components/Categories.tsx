@@ -62,12 +62,15 @@ export default function Categories() {
               }`}
             >
               {cat.cover ? (
-                <img
-                  src={cat.img}
-                  alt={cat.label}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-                  loading="lazy"
-                />
+                <>
+                  <img
+                    src={cat.img}
+                    alt={cat.label}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                    loading="lazy"
+                  />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/50 to-transparent" />
+                </>
               ) : (
                 <img
                   src={cat.img}

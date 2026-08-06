@@ -1,6 +1,6 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
-import Marquee from './components/Marquee'
+import StickyShowcase from './components/StickyShowcase'
 import Categories from './components/Categories'
 import BestSellers from './components/BestSellers'
 import Features from './components/Features'
@@ -13,11 +13,11 @@ import { useLenis } from './hooks/useLenis'
 export default function App() {
   useLenis()
   return (
-    <div id="top" className="min-h-screen overflow-x-hidden bg-mint text-forest antialiased">
+    <div id="top" className="min-h-screen overflow-x-clip bg-mint text-forest antialiased">
       <Header />
       <main>
         <Hero />
-        <Marquee />
+        <StickyShowcase />
         <Categories />
         <BestSellers />
         <Features />
