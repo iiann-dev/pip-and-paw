@@ -59,7 +59,7 @@ export default function Footer() {
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-white">
                 <PawPrint className="h-5 w-5" />
               </span>
-              <span className="font-serif-display text-xl tracking-tight text-mint">CozyPaws</span>
+              <span className="font-serif-display text-xl tracking-tight text-mint">Pip &amp; Paw</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-mint/55">
               Everything your pets love — vet-approved food, toys and cozy homes, delivered
@@ -103,7 +103,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-mint/10 pt-7 text-[12px] text-mint/45 sm:flex-row">
-          <p>© {new Date().getFullYear()} CozyPaws. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Pip &amp; Paw. All rights reserved.</p>
           <div className="flex items-center gap-5">
             <Link to="/" className="hover:text-mint">Privacy</Link>
             <Link to="/" className="hover:text-mint">Terms</Link>

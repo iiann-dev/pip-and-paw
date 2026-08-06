@@ -32,13 +32,13 @@ export default function Features() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Copy */}
         <div>
-          <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-accent">Why CozyPaws</p>
+          <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-accent">Why Pip &amp; Paw</p>
           <h2 className="reveal mt-3 font-serif-display text-4xl leading-[1.08] tracking-tight text-forest sm:text-5xl lg:text-6xl">
             Made with love, <br className="hidden sm:block" />
             for pets and planet
           </h2>
           <p className="reveal mt-5 max-w-md text-[15px] leading-relaxed text-forest/60">
-            We started CozyPaws because every pet deserves better than generic aisles. Small
+            We started Pip &amp; Paw because every pet deserves better than generic aisles. Small
             batches, honest ingredients and products our own pets use every day.
           </p>
 
@@ -66,7 +66,7 @@ export default function Features() {
           <div className="overflow-hidden rounded-[2rem] shadow-lift">
             <img
               src={ASSETS.petRetriever}
-              alt="Happy golden retriever with CozyPaws"
+              alt="Happy golden retriever with Pip &amp; Paw"
               className="h-[420px] w-full object-cover sm:h-[520px]"
               loading="lazy"
             />

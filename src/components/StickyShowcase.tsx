@@ -16,7 +16,7 @@ export default function StickyShowcase() {
         {/* Copy */}
         <div className="flex flex-1 flex-col justify-center px-6 py-14 sm:px-10 lg:px-20">
           <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-mint/50">
-            The CozyPaws difference
+            The Pip &amp; Paw difference
           </p>
           <h2 className="reveal mt-4 font-serif-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             Best products, chosen with love.
@@ -61,7 +61,7 @@ export default function StickyShowcase() {
         <div className="relative h-64 shrink-0 overflow-hidden sm:h-80 lg:h-full lg:flex-1">
           <img
             src={ASSETS.petRetrieverFull}
-            alt="Golden retriever with CozyPaws"
+            alt="Golden retriever with Pip &amp; Paw"
             className="h-full w-full object-cover"
             loading="lazy"
           />

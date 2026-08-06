@@ -27,9 +27,9 @@ interface Store {
 
 const StoreContext = createContext<Store | null>(null)
 
-const LS_USER = 'cozypaws_user'
-const LS_CART = 'cozypaws_cart'
-const LS_FAV = 'cozypaws_fav'
+const LS_USER = 'pipandpaw_user'
+const LS_CART = 'pipandpaw_cart'
+const LS_FAV = 'pipandpaw_fav'
 
 function load<T>(key: string, fallback: T): T {
   try {

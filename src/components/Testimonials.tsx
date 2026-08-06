@@ -56,7 +56,7 @@ export default function Testimonials() {
             Tails are wagging
           </h2>
           <p className="reveal mt-4 text-[15px] leading-relaxed text-forest/60">
-            Real stories from pet parents who switched to CozyPaws and never looked back.
+            Real stories from pet parents who switched to Pip &amp; Paw and never looked back.
           </p>
         </div>
 

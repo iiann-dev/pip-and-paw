@@ -1,12 +1,13 @@
-# CozyPaws 🐾
+# Pip & Paw 🐾
 
-A full premium pet-store marketing site for **CozyPaws** — a multi-page React prototype with
-a scroll-linked story. The hero is reproduced pixel-faithfully from the CozyPaws design
+A full premium pet-store marketing site for **Pip & Paw** — a multi-page React prototype with
+a scroll-linked story. The hero is reproduced pixel-faithfully from the original Pip &amp; Paw design
 (mint palette, DM Serif Display headline with staggered word-pop, floating product/video
-cards and pets standing OUTSIDE the banner frames — the pet photos' baked-in ledges were
-cropped so only their paws rest on the cards). Below the hero: a **sticky scroll-pinned
-showcase** (Framer-style: the next section slides up and covers the pinned panel), shop-by-
-category grid, best sellers, features, testimonials, newsletter CTA, FAQ and footer.
+cards and the original prompt's hero bottom: three full pet photos as a seamless strip with
+98K+ / "Best Products" + Explore / 4.6 overlays floating on top — no cards, paws never
+covered). Below the hero: a **sticky scroll-pinned showcase** (Framer-style: the next section
+slides up and covers the pinned panel), shop-by-category grid, best sellers, features,
+testimonials, newsletter CTA, FAQ and footer.
 
 **Prototype app** (no backend): multi-page routing with a fake local sign-up. Visitors see
 an empty header (no badges, no avatar, a "Sign in" pill); cart, favorites and profile are
@@ -59,5 +60,5 @@ src/
 
 ## Deploy
 
-- GitHub: https://github.com/iiann-dev/cozypaws
+- GitHub: https://github.com/iiann-dev/pip-and-paw
 - Vercel auto-deploys on push to `master`.

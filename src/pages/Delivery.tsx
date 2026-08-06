@@ -36,7 +36,7 @@ export default function Delivery() {
         </h1>
         <p className="reveal mt-5 max-w-2xl text-[15px] leading-relaxed text-forest/60">
           We deliver everywhere in the country, carbon-neutral, in two days. Here is exactly
-          how delivery and returns work with CozyPaws.
+          how delivery and returns work with Pip &amp; Paw.
         </p>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2">

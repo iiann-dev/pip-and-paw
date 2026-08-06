@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { Search, Star, ShoppingCart } from 'lucide-react'
+import { Search, Star, ShoppingCart, PawPrint } from 'lucide-react'
 import { useStore } from '../context/store'
 import { ASSETS } from '../data/assets'
 
@@ -32,8 +32,13 @@ export default function Header() {
     >
       <div className="flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link to="/" aria-label="CozyPaws home" className="shrink-0">
-          <img src={ASSETS.logo} alt="CozyPaws" className="h-[33px] w-auto lg:h-[52px]" style={{ maxWidth: '130px' }} />
+        <Link to="/" aria-label="Pip &amp; Paw home" className="flex shrink-0 items-center gap-2">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-white lg:h-9 lg:w-9">
+            <PawPrint className="h-4.5 w-4.5 lg:h-5 lg:w-5" />
+          </span>
+          <span className="font-serif-display text-lg leading-none tracking-tight text-forest lg:text-xl">
+            Pip &amp; Paw
+          </span>
         </Link>
 
         {/* Center nav */}
