@@ -28,23 +28,11 @@ const COLUMNS = [
     ],
   },
   {
-    title: 'Company',
-    links: [
-      { label: 'Our story', to: '/' },
-      { label: 'Reviews', to: '/' },
-      { label: 'Sustainability', to: '/delivery' },
-      { label: 'Careers', to: '/' },
-      { label: 'Press', to: '/blog' },
-    ],
-  },
-  {
-    title: 'Support',
+    title: 'Explore',
     links: [
       { label: 'Delivery & returns', to: '/delivery' },
-      { label: 'FAQ', to: '/' },
-      { label: 'Track your order', to: '/delivery' },
-      { label: 'Contact us', to: '/' },
-      { label: 'Pet nutrition guide', to: '/blog' },
+      { label: 'Brands', to: '/brands' },
+      { label: 'Blog', to: '/blog' },
     ],
   },
 ]
@@ -53,7 +41,7 @@ export default function Footer() {
   return (
     <footer className="bg-forest text-mint">
       <div className="mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8 lg:px-12 lg:pt-20">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr] lg:gap-14">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-14">
           <div>
             <Link to="/" className="flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-white">
@@ -100,14 +88,34 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-mint/40">Support</h3>
+            <ul className="mt-4 space-y-3">
+              {[
+                { label: 'Delivery & returns', to: '/delivery' },
+                { label: 'Favorites', to: '/signup' },
+                { label: 'Sign in or create account', to: '/signup' },
+              ].map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.to}
+                    className="text-sm text-mint/75 transition-colors duration-200 hover:text-mint"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-mint/10 pt-7 text-[12px] text-mint/45 sm:flex-row">
           <p>© {new Date().getFullYear()} Pip &amp; Paw. All rights reserved.</p>
           <div className="flex items-center gap-5">
-            <Link to="/" className="hover:text-mint">Privacy</Link>
-            <Link to="/" className="hover:text-mint">Terms</Link>
-            <Link to="/" className="hover:text-mint">Cookies</Link>
+            <Link to="/delivery" className="hover:text-mint">Delivery</Link>
+            <Link to="/brands" className="hover:text-mint">Brands</Link>
+            <Link to="/blog" className="hover:text-mint">Blog</Link>
           </div>
         </div>
       </div>

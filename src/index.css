@@ -136,3 +136,37 @@ html.lenis, html.lenis body { height: auto; }
   }
   .reveal, .reveal-scale { opacity: 1; transform: none; }
 }
+
+/* Page transition helpers */
+.page-transition-container {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* Ensure smooth transitions during navigation */
+.transitioning * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Scroll behavior during page transitions */
+html.transitioning {
+  scroll-behavior: auto !important;
+}
+
+/* Prevent layout shift during transitions */
+.page-transition-wrapper {
+  contain: layout style paint;
+  width: 100%;
+}
+
+/* Hero should not be affected by page transitions */
+#top > section:first-child {
+  isolation: isolate;
+}
+
+/* Smooth scroll restore */
+html:not(.transitioning) {
+  scroll-behavior: smooth;
+}

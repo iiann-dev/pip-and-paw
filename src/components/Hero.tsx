@@ -207,25 +207,25 @@ export default function Hero() {
   return (
     <section className="relative flex h-screen min-h-[660px] flex-col overflow-hidden md:h-[132vh]">
       {/* Text layer — desktop / tablet */}
-      <div className="relative z-20 hidden flex-col items-center px-4 pt-12 text-center sm:px-6 md:flex md:pt-14 lg:px-12 lg:pt-[4.6rem]">
+      <div className="relative z-20 hidden flex-col items-center px-4 pt-12 text-center sm:px-6 md:flex md:pt-32 lg:px-12 lg:pt-32">
         <Heading />
       </div>
 
       {/* Left product card — desktop */}
-      <div className="absolute left-10 top-[52px] z-30 hidden w-[clamp(150px,13vw,240px)] lg:block">
+      <div className="absolute left-10 top-[120px] z-30 hidden w-[clamp(150px,13vw,240px)] lg:block">
         <ProductCard />
       </div>
       {/* Left product card — tablet */}
-      <div className="absolute left-4 top-[80px] z-30 hidden w-[150px] md:block lg:hidden">
+      <div className="absolute left-4 top-[120px] z-30 hidden w-[150px] md:block lg:hidden">
         <ProductCard aspectClass="aspect-[3/4]" />
       </div>
 
       {/* Right video card — desktop */}
-      <div className="absolute right-10 top-[52px] z-30 hidden w-[clamp(112px,9vw,164px)] lg:block">
+      <div className="absolute right-10 top-[120px] z-30 hidden w-[clamp(112px,9vw,164px)] lg:block">
         <VideoCard />
       </div>
       {/* Right video card — tablet */}
-      <div className="absolute right-4 top-[80px] z-30 hidden w-[112px] md:block lg:hidden">
+      <div className="absolute right-4 top-[120px] z-30 hidden w-[112px] md:block lg:hidden">
         <VideoCard compact />
       </div>
 
