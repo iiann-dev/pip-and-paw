@@ -12,11 +12,16 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
   const [lenis, setLenis] = useState<Lenis | null>(null)
 
   useEffect(() => {
+    // Detect low-end device: <4GB RAM or prefers-reduced-motion
+    const nav = navigator as Navigator & { deviceMemory?: number }
+    const isLowEnd = nav.deviceMemory !== undefined && nav.deviceMemory < 4
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const instance = new Lenis({
       duration: 1.1,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      touchMultiplier: 1.6,
+      // Lower touch multiplier on low-end devices to reduce main-thread work
+      touchMultiplier: isLowEnd || prefersReduced ? 1 : 1.6,
     })
     setLenis(instance)
 

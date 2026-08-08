@@ -83,7 +83,7 @@ function BottomPets() {
         src={ASSETS.petDachshundFull}
         alt="Dachshund"
         className="block h-auto w-full min-w-0 flex-1 max-h-[min(70vh,55vw)] animate-photo-reveal delay-700"
-        loading="eager"
+        loading="lazy"
         decoding="async"
       />
       <img
@@ -91,13 +91,14 @@ function BottomPets() {
         alt="Golden retriever"
         className="block h-auto w-full min-w-0 flex-[1.265] max-h-[min(85vh,70vw)] animate-photo-reveal delay-600"
         loading="eager"
+        fetchPriority="high"
         decoding="async"
       />
       <img
         src={ASSETS.petTabbyFull}
         alt="Tabby cat"
         className="block h-auto w-full min-w-0 flex-1 max-h-[min(70vh,55vw)] animate-photo-reveal delay-800"
-        loading="eager"
+        loading="lazy"
         decoding="async"
       />
     </div>
@@ -162,7 +163,7 @@ function MobilePetStrip() {
           src={ASSETS.petDachshund}
           alt="Dachshund"
           className="block h-auto w-full"
-          loading="eager"
+          loading="lazy"
           decoding="async"
           width="720"
           height="308"
@@ -174,6 +175,7 @@ function MobilePetStrip() {
           alt="Golden retriever"
           className="block h-auto w-full"
           loading="eager"
+          fetchPriority="high"
           decoding="async"
           width="720"
           height="512"
@@ -184,7 +186,7 @@ function MobilePetStrip() {
           src={ASSETS.petTabby}
           alt="Tabby cat"
           className="block h-auto w-full"
-          loading="eager"
+          loading="lazy"
           decoding="async"
           width="720"
           height="364"
