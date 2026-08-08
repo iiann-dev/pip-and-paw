@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Play, Plus, Star } from 'lucide-react'
+import { ArrowRight, Plus, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { ASSETS } from '../data/assets'
 
@@ -13,68 +13,6 @@ function Heading() {
     </h1>
   )
 }
-
-function ProductCard({ aspectClass = 'aspect-[260/257]' }: { aspectClass?: string }) {
-  return (
-    <div className="animate-slide-in-left delay-600">
-      <div className="relative overflow-hidden rounded-2xl bg-white shadow-[0_18px_44px_-22px_rgb(26_61_26/0.35)]">
-        <div className={aspectClass}>
-          <img
-            src={ASSETS.catHouse}
-            alt="Cozy Cat House"
-            className="h-full w-full object-cover"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            width="640"
-            height="640"
-          />
-        </div>
-        <button
-          type="button"
-          aria-label="View Cozy Cat House"
-          className="absolute bottom-2 right-2 flex h-9 w-9 items-center justify-center rounded-full bg-forest text-white transition-all duration-200 hover:bg-forest-hover hover:scale-105 active:scale-95"
-        >
-          <ArrowUpRight className="h-4 w-4" />
-        </button>
-      </div>
-      <p className="mt-2 text-sm font-medium text-gray-700">Cozy Cat House</p>
-      <p className="text-base font-bold text-forest">$49.99</p>
-    </div>
-  )
-}
-
-function VideoCard({ compact = false }: { compact?: boolean }) {
-  return (
-    <div className="animate-slide-in-right delay-600">
-      <div className="relative overflow-hidden rounded-2xl shadow-[0_18px_44px_-22px_rgb(26_61_26/0.35)]">
-        <div className={compact ? 'aspect-3/4' : 'aspect-[177/287]'}>
-          <img
-            src={ASSETS.videoCard}
-            alt="Watch product reviews on TikTok and YouTube"
-            className="h-full w-full object-cover"
-            loading="eager"
-            decoding="async"
-            width="300"
-            height="486"
-          />
-        </div>
-        <div className="absolute bottom-3 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-forest text-white shadow-lg transition-transform duration-200 hover:scale-110">
-          <Play className="h-4 w-4 fill-current" />
-        </div>
-      </div>
-      <p className="mt-2 text-center text-[11px] leading-snug text-gray-600">
-        Watch Product Reviews on TikTok and YouTube
-      </p>
-    </div>
-  )
-}
-
-/* ---------- Bottom: 3 full pet images (strip) + overlays (md+), per original prompt ----------
-   Prompt: 3 images absolutely positioned bottom-0 left-0 right-0, z-10, flex items-end, no gaps.
-   Left flex-1 max-h min(70vh,55vw); Center flex-[1.265] max-h min(85vh,70vw); Right flex-1
-   max-h min(70vh,55vw); all w-full h-auto block. Overlays (98K+ / Best Products + Explore /
-   4.6) float on top at bottom: clamp(20px,4vh,50px). No cards — so the paws are never covered. */
 
 function BottomPets() {
   return (
@@ -196,58 +134,6 @@ function MobilePetStrip() {
   )
 }
 
-/* ---------- Mobile hero content ---------- */
-
-function MobileHero() {
-  return (
-    <div className="relative z-20 flex flex-1 flex-col px-4 pt-28 md:hidden">
-      <div className="flex flex-col items-center text-center">
-        <Heading />
-        <p className="mt-4 max-w-[260px] text-sm leading-relaxed text-gray-600 animate-fade-up delay-600">
-          Premium food, toys and cozy homes for happy pets — delivered to your door.
-        </p>
-        <Link
-          to="/shop"
-          className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.03] active:scale-95 animate-fade-up delay-700"
-        >
-          Explore Products
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-
-      <div className="mx-auto mt-8 flex w-full max-w-[440px] gap-3 animate-fade-up delay-800">
-        <div className="min-w-0 flex-1">
-          <ProductCard aspectClass="aspect-square" />
-        </div>
-        <div className="min-w-0 flex-1">
-          <VideoCard compact />
-        </div>
-      </div>
-
-      <div className="mt-auto flex items-center justify-center pb-4 animate-fade-up delay-900">
-        <div className="flex items-center gap-3 rounded-full border border-white/60 bg-white/80 px-4 py-2 shadow-[0_10px_30px_-12px_rgb(26_61_26/0.35)] backdrop-blur-[12px]">
-          <div className="flex items-center -space-x-2">
-            <img
-              src={ASSETS.avatar}
-              alt=""
-              className="h-7 w-7 rounded-full border-2 border-white object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-forest">
-              <Plus className="h-3 w-3 text-white" />
-            </div>
-          </div>
-          <span className="text-sm font-bold text-forest">98K+</span>
-          <span className="h-5 w-px bg-forest/15" aria-hidden="true" />
-          <Star className="h-4 w-4 fill-accent text-accent" />
-          <span className="text-sm font-bold text-forest">4.6</span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function Hero() {
   return (
     <section className="relative flex min-h-[560px] flex-col overflow-hidden md:h-[100vh] lg:h-[132vh]">
@@ -255,27 +141,6 @@ export default function Hero() {
       <div className="relative z-20 hidden flex-col items-center px-4 pt-12 text-center sm:px-6 md:flex md:pt-32 lg:px-12 lg:pt-32">
         <Heading />
       </div>
-
-      {/* Left product card — desktop */}
-      <div className="absolute left-10 top-[120px] z-30 hidden w-[clamp(150px,13vw,240px)] lg:block">
-        <ProductCard />
-      </div>
-      {/* Left product card — tablet */}
-      <div className="absolute left-4 top-[120px] z-30 hidden w-[150px] md:block lg:hidden">
-        <ProductCard aspectClass="aspect-[3/4]" />
-      </div>
-
-      {/* Right video card — desktop */}
-      <div className="absolute right-10 top-[120px] z-30 hidden w-[clamp(112px,9vw,164px)] lg:block">
-        <VideoCard />
-      </div>
-      {/* Right video card — tablet */}
-      <div className="absolute right-4 top-[120px] z-30 hidden w-[112px] md:block lg:hidden">
-        <VideoCard compact />
-      </div>
-
-      {/* Mobile content */}
-      <MobileHero />
 
       {/* Desktop/tablet bottom: 3 full pet photos + floating overlays (per original spec) */}
       <BottomPets />
