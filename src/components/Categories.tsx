@@ -41,7 +41,7 @@ const CATEGORIES = [
 export default function Categories() {
   const ref = useReveal<HTMLElement>()
   return (
-    <section ref={ref} id="shop" className="relative z-30 -mt-[100vh] bg-mint px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+    <section ref={ref} id="shop" className="relative z-30 bg-mint px-5 py-20 sm:px-8 lg:-mt-[100vh] lg:px-12 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div className="reveal">
@@ -86,7 +86,11 @@ export default function Categories() {
                 />
               )}
 
-              <div className={`relative mt-auto flex items-center justify-between ${cat.cover ? 'text-mint' : ''}`}>
+              <div
+                className={`relative z-10 mt-auto flex items-center justify-between gap-2 rounded-2xl ${
+                  cat.cover ? '' : 'bg-white/75 px-3 py-2.5 backdrop-blur-sm'
+                } ${cat.cover ? 'text-mint' : ''}`}
+              >
                 <div>
                   <p className="font-serif-display text-xl leading-none sm:text-2xl">{cat.label}</p>
                   <p className={`mt-1.5 text-[11px] font-medium uppercase tracking-wider ${cat.cover ? 'text-mint/60' : 'text-forest/50'}`}>

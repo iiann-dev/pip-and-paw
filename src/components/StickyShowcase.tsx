@@ -57,8 +57,10 @@ export default function StickyShowcase() {
                     </Link>
         </div>
 
-        {/* Visual — full retriever (dark ledge blends into the dark panel) */}
-        <div className="relative h-64 shrink-0 overflow-hidden sm:h-80 lg:h-full lg:flex-1">
+        {/* Visual — full retriever (dark ledge blends into the dark panel).
+            Hidden on small phones: the fixed-height strip cropped the dog's face
+            at the pinned-panel bottom. Shown from sm+ where it has room. */}
+        <div className="relative hidden shrink-0 overflow-hidden sm:block sm:h-80 lg:h-full lg:flex-1">
           <img
             src={ASSETS.petRetrieverFull}
             alt="Golden retriever with Pip &amp; Paw"
