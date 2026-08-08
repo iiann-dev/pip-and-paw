@@ -1,22 +1,27 @@
-// Hot-linked assets from the design CDN + locally cropped pet cutouts.
+// Hot-linked assets from the design CDN + locally cropped pet cutouts (WebP, ~95% smaller than the originals).
+// The CDN supports ?w= resizing — every hot URL is sized to its max display width (10x fewer bytes than the originals).
 // The three pets are local crops of the originals: their photos had a
 // mint/dark "ledge" baked into the bottom (33-50% of frame); we cropped it
 // off so the pets stand OUTSIDE the hero banner cards, paws resting on top.
 export const ASSETS = {
   logo: 'https://polo-pecan-73837341.figma.site/_assets/v11/0ae29d6d9628bede667f90d57bebe81b8f1ec2bf.svg',
-  avatar: 'https://polo-pecan-73837341.figma.site/_assets/v11/e62173d41f91350a59628e8a9a55ae078a886fb9.png?w=128',
-  catHouse: 'https://polo-pecan-73837341.figma.site/_assets/v11/3e5158dad63d392ade022e81890edc9f54d750bc.png',
-  videoCard: 'https://polo-pecan-73837341.figma.site/_assets/v11/76be6ec3a93a703b15e9cc01e764a4e3f9d7d2c0.png',
-  petDachshund: '/assets/dachshund.png',
-  petRetriever: '/assets/retriever.png',
-  petTabby: '/assets/tabby.png',
+  avatar: 'https://polo-pecan-73837341.figma.site/_assets/v11/e62173d41f91350a59628e8a9a55ae078a886fb9.png?w=96',
+  // Cat house — used from a 240px hero card up to a 560px product page image; 640px covers both
+  catHouse: 'https://polo-pecan-73837341.figma.site/_assets/v11/3e5158dad63d392ade022e81890edc9f54d750bc.png?w=640&q=70',
+  // Video card — original source is only 354px wide; w=300 keeps detail while cutting bytes (223KB -> 54KB)
+  videoCard: 'https://polo-pecan-73837341.figma.site/_assets/v11/76be6ec3a93a703b15e9cc01e764a4e3f9d7d2c0.png?w=300',
+  // Local pet cutouts (WebP @720px, ~90% smaller than the PNG crops they replace)
+  petDachshund: '/assets/dachshund.webp',
+  petRetriever: '/assets/retriever.webp',
+  petTabby: '/assets/tabby.webp',
   // full uncropped originals (with baked-in ledges) — used for the hero's full-width
-  // pet strip and the retriever on dark surfaces, per the original hero prompt
-  petDachshundFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/8d44b25186ef45a5789c74668fb781cea4e1ff49.png',
-  petRetrieverFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/96745c4e72ad5c5208e53a885df797fd82cd854a.png?h=1024',
-  petTabbyFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/81bd2e7a66b58f3d8f3ad78fd1ebf01af8dfdee1.png',
+  // pet strip and the retriever on dark surfaces, per the original hero prompt.
+  // Resized to display width (hero strip renders ~500px per pet):
+  petDachshundFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/8d44b25186ef45a5789c74668fb781cea4e1ff49.png?w=640',
+  petRetrieverFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/96745c4e72ad5c5208e53a885df797fd82cd854a.png?w=700&q=80',
+  petTabbyFull: 'https://polo-pecan-73837341.figma.site/_assets/v11/81bd2e7a66b58f3d8f3ad78fd1ebf01af8dfdee1.png?w=640',
 } as const
 
-export const NAV_LINKS = ['Home', 'Shop', 'Delivery and payment', 'Brands', 'Blog'] as const
+export const NAV_LINKS = ['Home', 'Shop', 'Delivery', 'Brands', 'Blog'] as const
 
 export const NAV_ANCHORS = ['#top', '#shop', '#delivery', '#brands', '#blog'] as const

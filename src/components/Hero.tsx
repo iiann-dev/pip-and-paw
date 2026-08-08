@@ -24,6 +24,10 @@ function ProductCard({ aspectClass = 'aspect-[260/257]' }: { aspectClass?: strin
             alt="Cozy Cat House"
             className="h-full w-full object-cover"
             loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width="640"
+            height="640"
           />
         </div>
         <button
@@ -50,6 +54,9 @@ function VideoCard({ compact = false }: { compact?: boolean }) {
             alt="Watch product reviews on TikTok and YouTube"
             className="h-full w-full object-cover"
             loading="eager"
+            decoding="async"
+            width="300"
+            height="486"
           />
         </div>
         <div className="absolute bottom-3 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-forest text-white shadow-lg transition-transform duration-200 hover:scale-110">
@@ -76,16 +83,22 @@ function BottomPets() {
         src={ASSETS.petDachshundFull}
         alt="Dachshund"
         className="block h-auto w-full min-w-0 flex-1 max-h-[min(70vh,55vw)] animate-photo-reveal delay-700"
+        loading="eager"
+        decoding="async"
       />
       <img
         src={ASSETS.petRetrieverFull}
         alt="Golden retriever"
         className="block h-auto w-full min-w-0 flex-[1.265] max-h-[min(85vh,70vw)] animate-photo-reveal delay-600"
+        loading="eager"
+        decoding="async"
       />
       <img
         src={ASSETS.petTabbyFull}
         alt="Tabby cat"
         className="block h-auto w-full min-w-0 flex-1 max-h-[min(70vh,55vw)] animate-photo-reveal delay-800"
+        loading="eager"
+        decoding="async"
       />
     </div>
   )
@@ -104,6 +117,8 @@ function BottomOverlays() {
             src={ASSETS.avatar}
             alt=""
             className="h-9 w-9 rounded-full border-2 border-white object-cover"
+            loading="lazy"
+            decoding="async"
           />
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-forest">
             <Plus className="h-4 w-4 text-white" />
@@ -143,13 +158,37 @@ function MobilePetStrip() {
   return (
     <div className="absolute inset-x-0 bottom-0 z-10 flex items-end md:hidden">
       <div className="flex-1 overflow-hidden animate-photo-reveal delay-700">
-        <img src={ASSETS.petDachshund} alt="Dachshund" className="block h-auto w-full" loading="eager" />
+        <img
+          src={ASSETS.petDachshund}
+          alt="Dachshund"
+          className="block h-auto w-full"
+          loading="eager"
+          decoding="async"
+          width="720"
+          height="308"
+        />
       </div>
       <div className="flex-[1.265] overflow-hidden animate-photo-reveal delay-600">
-        <img src={ASSETS.petRetriever} alt="Golden retriever" className="block h-auto w-full" loading="eager" />
+        <img
+          src={ASSETS.petRetriever}
+          alt="Golden retriever"
+          className="block h-auto w-full"
+          loading="eager"
+          decoding="async"
+          width="720"
+          height="512"
+        />
       </div>
       <div className="flex-1 overflow-hidden animate-photo-reveal delay-800">
-        <img src={ASSETS.petTabby} alt="Tabby cat" className="block h-auto w-full" loading="eager" />
+        <img
+          src={ASSETS.petTabby}
+          alt="Tabby cat"
+          className="block h-auto w-full"
+          loading="eager"
+          decoding="async"
+          width="720"
+          height="364"
+        />
       </div>
     </div>
   )
@@ -159,7 +198,7 @@ function MobilePetStrip() {
 
 function MobileHero() {
   return (
-    <div className="relative z-20 flex flex-1 flex-col px-4 pt-20 md:hidden">
+    <div className="relative z-20 flex flex-1 flex-col px-4 pt-28 md:hidden">
       <div className="flex flex-col items-center text-center">
         <Heading />
         <p className="mt-4 max-w-[260px] text-sm leading-relaxed text-gray-600 animate-fade-up delay-600">
@@ -174,7 +213,7 @@ function MobileHero() {
         </Link>
       </div>
 
-      <div className="mt-8 flex gap-3 animate-fade-up delay-800">
+      <div className="mx-auto mt-8 flex w-full max-w-[440px] gap-3 animate-fade-up delay-800">
         <div className="min-w-0 flex-1">
           <ProductCard aspectClass="aspect-square" />
         </div>
@@ -183,21 +222,25 @@ function MobileHero() {
         </div>
       </div>
 
-      <div className="mt-auto flex items-center justify-center gap-3 pb-4 animate-fade-up delay-900">
-        <div className="flex items-center -space-x-2">
-          <img
-            src={ASSETS.avatar}
-            alt=""
-            className="h-7 w-7 rounded-full border-2 border-mint object-cover"
-          />
-          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-forest">
-            <Plus className="h-3 w-3 text-white" />
+      <div className="mt-auto flex items-center justify-center pb-4 animate-fade-up delay-900">
+        <div className="flex items-center gap-3 rounded-full border border-white/60 bg-white/80 px-4 py-2 shadow-[0_10px_30px_-12px_rgb(26_61_26/0.35)] backdrop-blur-[12px]">
+          <div className="flex items-center -space-x-2">
+            <img
+              src={ASSETS.avatar}
+              alt=""
+              className="h-7 w-7 rounded-full border-2 border-white object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-forest">
+              <Plus className="h-3 w-3 text-white" />
+            </div>
           </div>
+          <span className="text-sm font-bold text-forest">98K+</span>
+          <span className="h-5 w-px bg-forest/15" aria-hidden="true" />
+          <Star className="h-4 w-4 fill-accent text-accent" />
+          <span className="text-sm font-bold text-forest">4.6</span>
         </div>
-        <span className="text-sm font-bold text-forest">98K+</span>
-        <span className="h-5 w-px bg-forest/15" aria-hidden="true" />
-        <Star className="h-4 w-4 fill-accent text-accent" />
-        <span className="text-sm font-bold text-forest">4.6</span>
       </div>
     </div>
   )
@@ -205,7 +248,7 @@ function MobileHero() {
 
 export default function Hero() {
   return (
-    <section className="relative flex h-screen min-h-[660px] flex-col overflow-hidden md:h-[132vh]">
+    <section className="relative flex min-h-[560px] flex-col overflow-hidden md:h-[100vh] lg:h-[132vh]">
       {/* Text layer — desktop / tablet */}
       <div className="relative z-20 hidden flex-col items-center px-4 pt-12 text-center sm:px-6 md:flex md:pt-32 lg:px-12 lg:pt-32">
         <Heading />
@@ -232,7 +275,7 @@ export default function Hero() {
       {/* Mobile content */}
       <MobileHero />
 
-      {/* Desktop/tablet bottom: 3 full pet images + floating overlays (per original prompt) */}
+      {/* Desktop/tablet bottom: 3 full pet photos + floating overlays (per original spec) */}
       <BottomPets />
       <BottomOverlays />
 
