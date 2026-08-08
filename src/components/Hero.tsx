@@ -127,20 +127,18 @@ function BottomOverlays() {
         <p className="text-xl font-bold leading-none text-forest">98K+</p>
       </div>
 
-      {/* Center — featured CTA (frosted pill so it reads over the retriever's chest on tablet) */}
-      <div className="pointer-events-auto flex flex-[1.265] items-center justify-center animate-fade-up delay-1100">
-        <div className="flex flex-col items-center gap-2 rounded-2xl border border-white/60 bg-white/85 px-5 py-3.5 shadow-[0_10px_30px_-12px_rgb(26_61_26/0.3)] backdrop-blur-[12px] sm:px-7 sm:py-4">
-          <p className="font-serif-display text-lg leading-snug text-forest sm:text-xl md:text-2xl">
-            Best Products for Your Pet
-          </p>
-          <Link
-            to="/shop"
-            className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.04] active:scale-95"
-          >
-            Explore Products
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </Link>
-        </div>
+      {/* Center — featured CTA */}
+      <div className="pointer-events-auto flex flex-[1.265] flex-col items-center gap-2.5 animate-fade-up delay-1100">
+        <p className="font-serif-display text-lg leading-snug text-white sm:text-xl md:text-2xl">
+          Best Products for Your Pet
+        </p>
+        <Link
+          to="/shop"
+          className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:scale-[1.04] active:scale-95"
+        >
+          Explore Products
+          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+        </Link>
       </div>
 
       {/* Right — rating */}
@@ -154,10 +152,47 @@ function BottomOverlays() {
   )
 }
 
-/* ---------- Mobile bottom: pets strip (below md, per original spec) ----------
-   REMOVED on phones: the absolutely-positioned 3-pet strip crashed into the
-   product cards + caption + 98K pill below 768px (video-documented bug).
-   Pets now exist only on md+ (BottomPets) where there's room to breathe. */
+/* ---------- Mobile bottom: pets strip (below md, per original spec) ---------- */
+
+function MobilePetStrip() {
+  return (
+    <div className="absolute inset-x-0 bottom-0 z-10 flex items-end md:hidden">
+      <div className="flex-1 overflow-hidden animate-photo-reveal delay-700">
+        <img
+          src={ASSETS.petDachshund}
+          alt="Dachshund"
+          className="block h-auto w-full"
+          loading="eager"
+          decoding="async"
+          width="720"
+          height="308"
+        />
+      </div>
+      <div className="flex-[1.265] overflow-hidden animate-photo-reveal delay-600">
+        <img
+          src={ASSETS.petRetriever}
+          alt="Golden retriever"
+          className="block h-auto w-full"
+          loading="eager"
+          decoding="async"
+          width="720"
+          height="512"
+        />
+      </div>
+      <div className="flex-1 overflow-hidden animate-photo-reveal delay-800">
+        <img
+          src={ASSETS.petTabby}
+          alt="Tabby cat"
+          className="block h-auto w-full"
+          loading="eager"
+          decoding="async"
+          width="720"
+          height="364"
+        />
+      </div>
+    </div>
+  )
+}
 
 /* ---------- Mobile hero content ---------- */
 
@@ -213,7 +248,7 @@ function MobileHero() {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[560px] flex-col overflow-hidden md:h-[100vh] lg:h-[100vh] xl:h-[132vh]">
+    <section className="relative flex min-h-[560px] flex-col overflow-hidden md:h-[100vh] lg:h-[132vh]">
       {/* Text layer — desktop / tablet */}
       <div className="relative z-20 hidden flex-col items-center px-4 pt-12 text-center sm:px-6 md:flex md:pt-32 lg:px-12 lg:pt-32">
         <Heading />
@@ -243,6 +278,9 @@ export default function Hero() {
       {/* Desktop/tablet bottom: 3 full pet photos + floating overlays (per original spec) */}
       <BottomPets />
       <BottomOverlays />
+
+      {/* Mobile bottom: pet strip */}
+      <MobilePetStrip />
     </section>
   )
 }
