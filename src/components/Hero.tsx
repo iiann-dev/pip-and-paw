@@ -141,6 +141,10 @@ export default function Hero() {
       <div className="relative z-20 hidden flex-col items-center px-4 pt-12 text-center sm:px-6 md:flex md:pt-32 lg:px-12 lg:pt-32">
         <Heading />
       </div>
+      {/* Text layer — mobile */}
+      <div className="relative z-20 md:hidden flex flex-col items-center px-4 pt-28 text-center">
+        <Heading />
+      </div>
 
       {/* Desktop/tablet bottom: 3 full pet photos + floating overlays (per original spec) */}
       <BottomPets />
