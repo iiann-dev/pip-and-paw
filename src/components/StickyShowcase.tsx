@@ -14,7 +14,7 @@ export default function StickyShowcase() {
     <section ref={ref} className="relative z-0" style={{ height: '200vh' }}>
       <div className="sticky top-0 z-10 flex h-screen flex-col overflow-hidden bg-[#003C08] text-white lg:flex-row">
         {/* Copy */}
-        <div className="flex flex-1 flex-col justify-center px-6 py-14 sm:px-10 lg:px-20">
+        <div className="flex flex-1 flex-col justify-start px-6 pt-28 pb-10 sm:px-10 sm:pt-28 sm:pb-14 lg:justify-center lg:px-20 lg:py-14">
           <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-mint/50">
             The Pip &amp; Paw difference
           </p>

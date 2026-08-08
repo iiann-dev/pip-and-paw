@@ -129,7 +129,7 @@ export default function Header() {
           ) : (
             <Link
               to="/signup"
-              className="hidden h-[42px] items-center rounded-[20px] bg-forest px-5 text-[15px] font-medium tracking-[-0.02em] text-white transition-all duration-200 ease-out hover:bg-forest-hover active:scale-[0.97] sm:inline-flex"
+              className="hidden h-[42px] items-center whitespace-nowrap rounded-[20px] bg-forest px-5 text-[15px] font-medium tracking-[-0.02em] text-white transition-all duration-200 ease-out hover:bg-forest-hover active:scale-[0.97] sm:inline-flex"
             >
               Sign in
             </Link>

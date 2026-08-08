@@ -14,14 +14,14 @@ import Favorites from './pages/Favorites'
 import Profile from './pages/Profile'
 import SignUp from './pages/SignUp'
 import NotFound from './pages/NotFound'
-import { useLenis } from './hooks/useLenis'
+import { LenisProvider } from './context/lenis'
 
 export default function App() {
-  useLenis()
   return (
-    <div id="top" className="min-h-screen overflow-x-clip bg-mint text-forest antialiased">
-      <Header />
-      <ScrollToTop />
+    <LenisProvider>
+      <div id="top" className="min-h-screen overflow-x-clip bg-mint text-forest antialiased">
+        <Header />
+        <ScrollToTop />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -60,7 +60,8 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </LenisProvider>
   )
 }
