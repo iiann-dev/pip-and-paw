@@ -62,7 +62,7 @@ export default function Categories() {
               key={cat.label}
               to={`/shop/${cat.slug}`}
               style={{ '--reveal-delay': `${cat.delay}ms` } as React.CSSProperties}
-              className={`reveal group relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift ${
+              className={`reveal group relative flex aspect-[3/4] flex-col ${cat.cover ? 'justify-end' : 'justify-start'} overflow-hidden rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift ${
                 cat.cover ? 'border-transparent bg-forest' : 'border-forest/10 bg-mint-deep'
               }`}
             >
@@ -86,7 +86,7 @@ export default function Categories() {
                 />
               )}
 
-              <div className={`relative mt-auto flex items-center justify-between ${cat.cover ? 'text-mint' : ''}`}>
+              <div className={`relative ${cat.cover ? 'mt-auto' : 'mt-0'} flex items-center justify-between ${cat.cover ? 'text-mint' : ''}`}>
                 <div>
                   <p className="font-serif-display text-xl leading-none sm:text-2xl">{cat.label}</p>
                   <p className={`mt-1.5 text-[11px] font-medium uppercase tracking-wider ${cat.cover ? 'text-mint/60' : 'text-forest/50'}`}>
